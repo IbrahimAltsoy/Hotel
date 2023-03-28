@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -19,6 +19,13 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Hotel.BusinessLayer\Hotel.BusinessLayer.csproj" />
+    <ProjectReference Include="..\Hotel.DataAccessLayer\Hotel.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\Hotel.DtoLayer\Hotel.DtoLayer.csproj" />
+    <ProjectReference Include="..\Hotel.EntitiyLayer\Hotel.EntitiyLayer.csproj" />
   </ItemGroup>
 
 </Project>

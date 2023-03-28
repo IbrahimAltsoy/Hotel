@@ -1,6 +1,8 @@
-﻿namespace Hotel.EntitiyLayer.Concreate
+﻿using Hotel.EntitiyLayer.Abstract;
+
+namespace Hotel.EntitiyLayer.Concreate
 {
-	public class Stuff
+	public class Stuff:IEntity
 	{
 		public Guid Id { get; set; }
 		public string Name { get; set; }
