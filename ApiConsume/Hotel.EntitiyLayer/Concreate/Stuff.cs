@@ -10,6 +10,6 @@ namespace Hotel.EntitiyLayer.Concreate
 		public string LinkedinUrl { get; set; }
 		public string TwitterUrl { get; set; }
 		public string InstagramUrl { get; set; }
-		public bool IsActive { get; set; }
+		public bool IsActive { get; set; }=false;
 	}
 }
