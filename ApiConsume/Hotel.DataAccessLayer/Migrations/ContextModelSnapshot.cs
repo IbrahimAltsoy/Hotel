@@ -156,6 +156,9 @@ namespace Hotel.DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.ToTable("Subscribes");

@@ -2,8 +2,7 @@
 
 namespace Hotel.BusinessLayer.Concreate
 {
-	public class StuffService: IStuffService
+	public class TestimonialService:ITestimonialService
 	{
-		
 	}
 }

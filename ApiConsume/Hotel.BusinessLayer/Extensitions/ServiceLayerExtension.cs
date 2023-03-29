@@ -15,9 +15,12 @@ namespace Hotel.BusinessLayer.Extensitions
 			services.AddTransient(typeof(IService<>), typeof(Service<>));
 			
 			services.AddScoped<IStuffService, StuffService>();
-			//services.AddTransient<IUserService, UserService>();// servis için eklendi
-			//services.AddScoped<IImageHelper, ImageHelper>();
-			//services.AddTransient<IDashboardService, DashboardService>();
+			services.AddScoped<IRoomService, RoomService>();
+			services.AddScoped<IServiceService, ServiceServices>();
+			services.AddScoped<ISliderService, SliderService>();
+			services.AddScoped<ISubscribeService, SubscribeService>();
+			services.AddScoped<ITestimonialService, TestimonialService>();
+			
 
 			//services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 			//services.AddAutoMapper(assembly);

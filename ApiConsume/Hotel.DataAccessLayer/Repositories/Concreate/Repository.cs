@@ -1,94 +1,69 @@
 ﻿using Hotel.DataAccessLayer.Repositories.Abstract;
 using Hotel.EntitiyLayer.Abstract;
+using Hotel.EntitiyLayer.Concreate;
 using Microsoft.EntityFrameworkCore;
-using System.Linq.Expressions;
-using Hotel.DataAccessLayer.Context;
+
 namespace Hotel.DataAccessLayer.Repositories.Concreate
 {
-    public class Repository<T> : IRepository<T> where T : class, IEntity, new()
+	public class Repository<T> : IRepository<T> where T : class, IEntity, new()
     {
-		protected Hotel.DataAccessLayer.Context.Context context;
-		protected DbSet<T> dbSet; // veritabanı için boş generic dbset oluşturduk
-		public Repository(Hotel.DataAccessLayer.Context.Context _context)
-		{
-			context = _context;
-			dbSet = context.Set<T>(); // boş dbset i context içindeki ilgili class ın db seti için ayarladık
-		}
-		public int Add(T entity)
-		{
-			dbSet.Add(entity);
-			return SaveChanges();
-		}
+		private readonly DbContext _context;
 
-		public async Task AddAsync(T entity)
+		public Repository(DbContext _dbContext)
 		{
-			await context.AddAsync(entity);
+			this._context = _dbContext;
 		}
-
-		public void Delete(T entity)
+		private DbSet<T> Table { get => _context.Set<T>(); }
+		public async Task<List<T>> GetAllIsActiveTrueAsync()
 		{
-			context.Remove(entity);
+			var models = await _context.Set<T>().Where(x=>x.IsActive).ToListAsync();
+				/*T.Where(x => x.IsActive).ToListAsync();*/
+			return models;
 		}
-
-		public T Find(int id)
+		public async Task<List<T>> GetAllIsActiveFalseAsync()
 		{
-			return dbSet.Find(id);
+			var models = await _context.Set<T>().Where(x => !x.IsActive).ToListAsync();
+			return models;
 		}
-
-		public IQueryable<T> FindAllAsync(Expression<Func<T, bool>> expression)
+		public async Task<T> GetByIdAsync(Guid id)
 		{
-			return dbSet.Include(expression);
+			return await _context.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
+				/*T.FirstOrDefaultAsync(x => x.Id == id);*/
+		}
+		public async Task<int> AddAsync(T entitiy)
+		{
+			await _context.Set<T>().AddAsync(entitiy);
+			return _context.SaveChanges();
+
 		}
 
-		public async Task<T> FindAsync(int id)
+		public async Task<int> SafeDeletedAsync(T entity)
 		{
-			return await dbSet.FindAsync(id);
+			var stuff1 = await _context.Set<T>().FirstOrDefaultAsync(x => x.Id == entity.Id);
+			if (stuff1.IsActive)
+			{
+				stuff1.IsActive = false;
+
+			}
+			else
+			{
+				stuff1.IsActive = true;
+			}
+			_context.Set<T>().Update(stuff1);
+			return _context.SaveChanges();
+
 		}
-
-		public async Task<T> FirstOfDefaultAsync(Expression<Func<T, bool>> expression)
+		public async Task UpdateAsync(T entity)
 		{
-			return await dbSet.FirstOrDefaultAsync(expression);
+			_context.Set<T>().Update(entity);
+			await _context.SaveChangesAsync();
 		}
-
-
-		public T Get(Expression<Func<T, bool>> expression)
+		public async Task CompletelyDeletedAsync(Guid id)
 		{
-			return dbSet.FirstOrDefault(expression);
-		}
+			var model = await _context.Set<T>().FirstOrDefaultAsync<T>(x=>x.Id==id);
+			_context.Set<T>().Remove(model);
+			await _context.SaveChangesAsync();
 
-		public List<T> GetAll()
-		{
-			return dbSet.ToList();
-		}
-
-		public List<T> GetAll(Expression<Func<T, bool>> expression)
-		{
-			return dbSet.Where(expression).ToList();
-		}
-
-		public async Task<List<T>> GetAllAsync()
-		{
-			return await dbSet.ToListAsync();
-		}
-
-		public async Task<List<T>> GetAllAsync(Expression<Func<T, bool>> expression)
-		{
-			return await dbSet.Where(expression).ToListAsync();
-		}
-
-		public int SaveChanges()
-		{
-			return context.SaveChanges();
-		}
-
-		public async Task<int> SaveChangesAsync()
-		{
-			return await context.SaveChangesAsync();
-		}
-
-		public void Update(T entity)
-		{
-			context.Update(entity);
 		}
 	}
 }

@@ -7,35 +7,48 @@ namespace Hotel.WebApi.Controllers
 	[ApiController]
 	public class StaffController : ControllerBase
 	{
-		private readonly IStuffService _service;
+		
+		private readonly IService<Stuff> _service;
 
-		public StaffController(IStuffService service)
+		public StaffController(IService<Stuff> service)
 		{
+			
 			_service = service;
 		}
 		[HttpGet]
 		public async Task<IActionResult> Stuffs()
 		{
-			var model = await _service.GetAllAsync();
+			var model = await _service.GetAllIsActiveTrueAsync();
 			return Ok(model);
 		}
 		[HttpPost]
 		public async Task<IActionResult> AddStuffs(Stuff stuff)
 		{
-			await _service.AddStuffAsync(stuff);
+			await _service.AddAsync(stuff);
 			return Ok();
 		}
-		[HttpDelete]
+		[HttpDelete("{id}")]
 		public async Task<IActionResult> DeleteStuffs(Guid id)
 		{
-			var model = await _service.GetByIdAsync(id);			 
-			return Ok(await _service.SafeDeletedStuff(model));
+			var model = await _service.GetByIdAsync(id);
+			return Ok(await _service.SafeDeletedAsync(model));
+			//if (model==null)
+			//{
+			//	return BadRequest();
+			//}
+			//else
+			//{
+			//	await _service.AllDeletedStuff(model.Id);
+			//	return StatusCode(StatusCodes.Status200OK);
+			//}
+
 		}
-		[HttpPut]
+		
+		[HttpPut("{id}")]
 		public async Task<IActionResult> UpdateStuffs(Stuff stuff)
 		{
-			await _service.UpdateStaffAsync(stuff);
-			return Ok();
+			await _service.UpdateAsync(stuff);
+			return NoContent();
 		}
 		[HttpGet("{id}")]
 		public async Task<IActionResult> Stuff(Guid id)

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hotel.DataAccessLayer.Migrations
 {
     [DbContext(typeof(Hotel.DataAccessLayer.Context.Context))]
-    [Migration("20230329073408_mig-1")]
+    [Migration("20230329195755_mig-1")]
     partial class mig1
     {
         /// <inheritdoc />
@@ -158,6 +158,9 @@ namespace Hotel.DataAccessLayer.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
