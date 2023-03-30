@@ -11,8 +11,8 @@ namespace Hotel.BusinessLayer.Extensitions
 		{
 			var assembly = Assembly.GetExecutingAssembly();
 
-
-			services.AddTransient(typeof(IService<>), typeof(Service<>));
+         
+            services.AddTransient(typeof(IService<>), typeof(Service<>));
 			
 			services.AddScoped<IStuffService, StuffService>();
 			services.AddScoped<IRoomService, RoomService>();
@@ -20,21 +20,20 @@ namespace Hotel.BusinessLayer.Extensitions
 			services.AddScoped<ISliderService, SliderService>();
 			services.AddScoped<ISubscribeService, SubscribeService>();
 			services.AddScoped<ITestimonialService, TestimonialService>();
-			
+            
+            //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            //services.AddAutoMapper(assembly);
 
-			//services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-			//services.AddAutoMapper(assembly);
 
+            //services.AddControllersWithViews().AddFluentValidation(opt =>
+            //{
+            //	opt.RegisterValidatorsFromAssemblyContaining<ArticleValidator>();
+            //	opt.DisableDataAnnotationsValidation = true;
+            //	opt.ValidatorOptions.LanguageManager.Culture = new CultureInfo("tr");
 
-			//services.AddControllersWithViews().AddFluentValidation(opt =>
-			//{
-			//	opt.RegisterValidatorsFromAssemblyContaining<ArticleValidator>();
-			//	opt.DisableDataAnnotationsValidation = true;
-			//	opt.ValidatorOptions.LanguageManager.Culture = new CultureInfo("tr");
-
-			//});
-			// Fluent validation için eklenen servic kodlarıdır. 
-			return services;
+            //});
+            // Fluent validation için eklenen servic kodlarıdır. 
+            return services;
 		}
 	}
 }

@@ -1,0 +1,30 @@
+﻿@model StuffViewModel
+@{
+    ViewData["Title"] = "AddStuff";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="leave-comment-form mt-5" id="reply">
+    <h4 class="side-title mb-2">Yorum Yap</h4>
+
+    <form method="post">
+        <label>Personel Adı Soyadı</label>
+        <input type="text" name="Name" class="form-control" />
+        <br />
+        <label>Personel Ünvan</label>
+        <input type="text" name="Title" class="form-control" />
+        <br />
+        <label>Linkedin Adresi</label>
+        <input type="text" name="LinkedinUrl" class="form-control" />
+        <br />
+        <label>Twitter Adresi</label>
+        <input type="text" name="TwitterUrl" class="form-control" />
+        <br />
+        <label>Instagram Adresi</label>
+        <input type="text" name="InstagramUrl" class="form-control" />
+        <br />
+        <button class="btn btn-primary">Ekle</button>
+                
+    </form>
+
+</div>

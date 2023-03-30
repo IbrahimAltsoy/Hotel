@@ -16,6 +16,14 @@ builder.Services.LoadServicesLayerExtensions();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(option =>// api iþlemlerini yapabilmek için Cors metodu eklendi
+{
+    option.AddPolicy("HotelsApiCors", opt =>
+    {
+        opt.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
+
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -26,7 +34,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("HotelsApiCors");// Cors iþlemi için
 app.UseAuthorization();
 
 app.MapControllers();
