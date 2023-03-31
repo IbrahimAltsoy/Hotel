@@ -20,7 +20,7 @@ namespace Hotel.BusinessLayer.Extensitions
 			services.AddScoped<ISliderService, SliderService>();
 			services.AddScoped<ISubscribeService, SubscribeService>();
 			services.AddScoped<ITestimonialService, TestimonialService>();
-            
+           
             //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             //services.AddAutoMapper(assembly);
 

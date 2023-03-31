@@ -8,14 +8,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-//builder.Services.AddControllersWithViews();
+
 builder.Services.AddDbContext<Context>();
-//builder.Services.AddTransient(typeof(IService<>), typeof(Service<>));
+
 builder.Services.LoadServicesLayerExtensions();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddAutoMapper(typeof(Program)); //AutoMapper için eklenen alandýr
 builder.Services.AddCors(option =>// api iþlemlerini yapabilmek için Cors metodu eklendi
 {
     option.AddPolicy("HotelsApiCors", opt =>
