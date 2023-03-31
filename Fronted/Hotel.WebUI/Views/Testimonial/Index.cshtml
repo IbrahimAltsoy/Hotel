@@ -1,0 +1,37 @@
+﻿@model IEnumerable<AddTestimonialViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<h1>Kullanıcı Sayfasına Hoşgeldiniz</h1>
+<table class="table table-bordered">
+    <tr>
+        <th>No</th>
+        <th>Ad Soyad</th>
+        <th>Ünvan</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Detaylar</th>
+
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+
+            <tr>
+                <th>@count</th>
+                <th>@item.Name</th>
+                <th>@item.Title</th>
+                <th><a href="/Testimonial/DeleteStuff/@item.Id/" class="btn btn-danger">Sil</a></th>
+                <th><a href="/Testimonial/UpdateStuff/@item.Id/" class="btn btn-success">Güncelle</a></th>
+                <th><a href="#" class="btn btn-dark">Detay</a></th>  
+
+            </tr>
+    }
+
+</table>
+<a href="/Stuff/AddStuff/" class="btn btn-primary">Personel ekle</a>
+

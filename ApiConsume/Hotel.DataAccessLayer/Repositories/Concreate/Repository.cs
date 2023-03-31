@@ -16,8 +16,7 @@ namespace Hotel.DataAccessLayer.Repositories.Concreate
 		private DbSet<T> Table { get => _context.Set<T>(); }
 		public async Task<List<T>> GetAllIsActiveTrueAsync()
 		{
-			var models = await _context.Set<T>().Where(x=>x.IsActive).ToListAsync();
-				/*T.Where(x => x.IsActive).ToListAsync();*/
+			var models = await _context.Set<T>().Where(x=>x.IsActive).ToListAsync();				
 			return models;
 		}
 		public async Task<List<T>> GetAllIsActiveFalseAsync()
@@ -27,8 +26,7 @@ namespace Hotel.DataAccessLayer.Repositories.Concreate
 		}
 		public async Task<T> GetByIdAsync(Guid id)
 		{
-			return await _context.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
-				/*T.FirstOrDefaultAsync(x => x.Id == id);*/
+			return await _context.Set<T>().FirstOrDefaultAsync(x => x.Id == id);				
 		}
 		public async Task<int> AddAsync(T entitiy)
 		{

@@ -1,0 +1,27 @@
+﻿@model UpdateStuffViewModel
+@{
+    ViewData["Title"] = "UpdateStuff";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Personel Güncelleme Sayfasına Hoşgeldiniz</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+    <label>Personel Adı</label>
+    <input type="text" asp-for="Name" class="form-control" />
+    <br />
+    <label>Personel Ünvanı</label>
+    <input type="text" asp-for="Title" class="form-control" />
+    <br />
+    <label>Linkedin Hesabı</label>
+    <input type="text" asp-for="LinkedinUrl" class="form-control" />
+    <br />
+    <label>Twitter Hesabı</label>
+    <input type="text" asp-for="TwitterUrl" class="form-control" />
+    <br />
+    <label>Instagram Hesabı</label>
+    <input type="text" asp-for="InstagramUrl" class="form-control" />
+    <br />
+    <button class="btn btn-outline-success">Personeli Güncelle</button>
+</form>

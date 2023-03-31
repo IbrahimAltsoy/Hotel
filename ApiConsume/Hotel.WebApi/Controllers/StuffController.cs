@@ -32,44 +32,13 @@ namespace Hotel.WebApi.Controllers
 		{
 			var model = await _service.GetByIdAsync(id);
 			return Ok(await _service.SafeDeletedAsync(model));
-			//if (model==null)
-			//{
-			//	return BadRequest();
-			//}
-			//else
-			//{
-			//	await _service.AllDeletedStuff(model.Id);
-			//	return StatusCode(StatusCodes.Status200OK);
-			//}
-
-		}
-   //     [HttpDelete("{id}")]
-   //     public async Task<IActionResult> CompletedDeleted(Guid id)
-   //     {
-			//var model = await _service.GetByIdAsync(id);
-			//if (model!=null)
-			//{
-   //             	await _service.CompletelyDeletedAsync(model.Id);
-   //             	return StatusCode(StatusCodes.Status200OK);
-   //         }
-   //         return BadRequest();
-   //         //if (model==null)
-   //         //{
-   //         //	return BadRequest();
-   //         //}
-   //         //else
-   //         //{
-   //         //	await _service.AllDeletedStuff(model.Id);
-   //         //	return StatusCode(StatusCodes.Status200OK);
-   //         //}
-
-   //     }
-
+			
+		}      
         [HttpPut("{id}")]
 		public async Task<IActionResult> UpdateStuffs(Stuff stuff)
 		{
 			await _service.UpdateAsync(stuff);
-			return NoContent();
+			return Ok();
 		}
 		[HttpGet("{id}")]
 		public async Task<IActionResult> Stuff(Guid id)
