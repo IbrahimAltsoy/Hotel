@@ -1,0 +1,35 @@
+﻿@model List<ResultServiceDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+<h1>Hizmetler Sayfasına Hoşgeldiniz</h1>
+<table class="table table-bordered">
+    <tr>
+        <th>No</th>
+        <th>Hizmet</th>
+        <th>Açıklama</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Detaylar</th>
+
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+
+        <tr>
+            <th>@count</th>
+            <th>@item.Title</th>
+            <th>@item.Description</th>
+            <th><a href="/Service/DeleteService/@item.Id/" class="btn btn-danger">Sil</a></th>
+            <th><a href="/Service/UpdateService/@item.Id/" class="btn btn-success">Güncelle</a></th>
+            <th><a href="#" class="btn btn-dark">Detay</a></th>
+
+        </tr>
+    }
+
+</table>
+<a href="/Service/AddService/" class="btn btn-primary">Hizmet ekle</a>

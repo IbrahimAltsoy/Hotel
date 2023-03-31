@@ -69,7 +69,7 @@ namespace Hotel.WebUI.Controllers
         public async Task<IActionResult> DeleteStuff(Guid id)
         {
             var client = _clientFactory.CreateClient();
-            var response = await client.GetAsync($"https://localhost:7064/api/Stuff/{id}");
+            var response = await client.DeleteAsync($"https://localhost:7064/api/Stuff/{id}");
             if (response.IsSuccessStatusCode)
             {                  
                 

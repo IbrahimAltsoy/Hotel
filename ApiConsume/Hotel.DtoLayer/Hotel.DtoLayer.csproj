@@ -25,7 +25,6 @@
 
   <ItemGroup>
     <Folder Include="Dtos\SliderDto\" />
-    <Folder Include="Dtos\ServiceDto\" />
     <Folder Include="Dtos\SubscribeDto\" />
     <Folder Include="Dtos\StuffDto\" />
   </ItemGroup>

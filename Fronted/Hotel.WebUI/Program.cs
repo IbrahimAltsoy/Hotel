@@ -11,7 +11,7 @@ builder.Services.AddControllersWithViews()
         TimeOut = 3000
 
     });
-
+builder.Services.AddAutoMapper(typeof(Program)); //AutoMapper için eklenen alandýr
 var app = builder.Build();
 
 
