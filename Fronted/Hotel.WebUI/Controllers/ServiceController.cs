@@ -1,6 +1,9 @@
-﻿using Hotel.WebUI.Dtos.ServiceDto;
+﻿using Hotel.EntitiyLayer.Concreate;
+using Hotel.WebUI.Dtos.ServiceDto;
 using Microsoft.AspNetCore.Mvc;
+using NToastNotify;
 using System.Drawing.Drawing2D;
+using static Hotel.WebUI.ToastrMessage.ToastrMessage;
 
 namespace Hotel.WebUI.Controllers
 {
@@ -8,10 +11,12 @@ namespace Hotel.WebUI.Controllers
     {
         private readonly HttpClient _httpClient;
         private readonly string _apiAdres = "https://localhost:7064/api/Service";
+        private readonly IToastNotification _toastNotification;
 
-        public ServiceController(HttpClient httpClient)
+        public ServiceController(HttpClient httpClient, IToastNotification toastNotification)
         {
             _httpClient = httpClient;
+            _toastNotification = toastNotification;
         }
         public async Task<IActionResult> Index()
         {
@@ -31,10 +36,24 @@ namespace Hotel.WebUI.Controllers
                 {
                     
                     var response = await _httpClient.PostAsJsonAsync(_apiAdres, serviceDto); 
-                    if (response.IsSuccessStatusCode) return RedirectToAction(nameof(Index)); 
+                    if (response.IsSuccessStatusCode)
+                    {
+                        _toastNotification.AddSuccessToastMessage(MessajeToastr.ToastrAddSuccesfull(serviceDto.Title),
+                        new ToastrOptions
+                        {
+                            Title = "Başarılı"
+                        });
+                        return RedirectToAction(nameof(Index));
+                    }
+                        
                 }
                 catch
                 {
+                    _toastNotification.AddSuccessToastMessage(MessajeToastr.ToastrAddUnSuccessfull(serviceDto.Title),
+                        new ToastrOptions
+                        {
+                            Title = "Başarısız"
+                        });
                     ModelState.AddModelError("", "Hata Oluştu!");
                 }
             }
@@ -55,10 +74,24 @@ namespace Hotel.WebUI.Controllers
                 try
                 {                   
                     var response = await _httpClient.PutAsJsonAsync(_apiAdres + "/" + id, updateService);
-                    if (response.IsSuccessStatusCode) return RedirectToAction(nameof(Index));
+                    if (response.IsSuccessStatusCode)
+                    {
+                        _toastNotification.AddSuccessToastMessage(MessajeToastr.ToastrUpdateSuccesfull(updateService.Title),
+                        new ToastrOptions
+                        {
+                            Title = "Başarılı"
+                        });
+                        return RedirectToAction(nameof(Index));
+                    }
+                        
                 }
                 catch
                 {
+                    _toastNotification.AddSuccessToastMessage(MessajeToastr.ToastrUpdateUnSuccessfull(updateService.Title),
+                        new ToastrOptions
+                        {
+                            Title = "Başarısız"
+                        });
                     ModelState.AddModelError("", "Hata Oluştu!");
                 }
             }

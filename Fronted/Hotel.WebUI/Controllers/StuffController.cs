@@ -93,10 +93,24 @@ namespace Hotel.WebUI.Controllers
                 try
                 {                    
                     var cevap = await _httpClient.PutAsJsonAsync(_apiAdres + "/" + id, model);
-                    if (cevap.IsSuccessStatusCode) return RedirectToAction(nameof(Index));
+                    if (cevap.IsSuccessStatusCode)
+                    {
+                        _toastNotification.AddSuccessToastMessage(MessajeToastr.ToastrUpdateSuccesfull(model.Name),
+                        new ToastrOptions
+                        {
+                            Title = "Başarılı"
+                        });
+                        return RedirectToAction(nameof(Index));
+                    } 
+                    
                 }
                 catch
                 {
+                    _toastNotification.AddErrorToastMessage(MessajeToastr.ToastrUpdateUnSuccessfull(model.Name),
+                        new ToastrOptions
+                        {
+                            Title = "Başarısız!!!"
+                        });
                     ModelState.AddModelError("", "Hata Oluştu!");
                 }
             }

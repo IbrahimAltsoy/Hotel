@@ -5,6 +5,7 @@ using NToastNotify;
 using static Hotel.WebUI.ToastrMessage.ToastrMessage;
 using System.Text;
 using Hotel.WebUI.Models.Testimonial;
+using Hotel.EntitiyLayer.Concreate;
 
 namespace Hotel.WebUI.Controllers
 {
@@ -68,7 +69,7 @@ namespace Hotel.WebUI.Controllers
 
         }
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTEstimonial(Guid id)
+        public async Task<IActionResult> DeleteTestimonial(Guid id)
         {
             var client = _clientFactory.CreateClient();
             var response = await client.GetAsync($"https://localhost:7064/api/Stuff/{id}");
@@ -95,10 +96,24 @@ namespace Hotel.WebUI.Controllers
                 try
                 {
                     var cevap = await _httpClient.PutAsJsonAsync(_apiAdres + "/" + id, model);
-                    if (cevap.IsSuccessStatusCode) return RedirectToAction(nameof(Index));
+                    if (cevap.IsSuccessStatusCode)
+                    {
+                        _toastNotification.AddSuccessToastMessage(MessajeToastr.ToastrUpdateSuccesfull(model.Name),
+                        new ToastrOptions
+                        {
+                            Title = "Başarılı"
+                        });
+                        return RedirectToAction(nameof(Index));
+                    }
+                    
                 }
                 catch
                 {
+                    _toastNotification.AddSuccessToastMessage(MessajeToastr.ToastrUpdateUnSuccessfull(model.Name),
+                        new ToastrOptions
+                        {
+                            Title = "Başarısız"
+                        });
                     ModelState.AddModelError("", "Hata Oluştu!");
                 }
             }
