@@ -1,0 +1,48 @@
+﻿@model List<ResultRoomDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+ @*public Guid Id { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string Image { get; set; }
+        public float Price { get; set; }
+        public string RoomNumber { get; set; }
+        public int BedCount { get; set; }
+        public int BathCount { get; set; }
+        public bool Wifi { get; set; } = true;
+        public bool IsActive { get; set; } = false;*@
+<h1>Oda Bilgisi Sayfasına Hoşgeldiniz</h1>
+<table class="table table-bordered">
+    <tr>
+        <th>No</th>
+        <th>Oda Numarası</th>        
+        <th>Açıklama</th>
+        <th>Fotoğraf</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Detaylar</th>
+
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+
+        <tr>
+            <th>@count</th>
+            <th>@item.Title</th>
+            <th>@item.Description</th>
+            <th>@item.Image</th>
+            
+            <th><a href="/Room/DeleteRoom/@item.Id/" class="btn btn-danger">Sil</a></th>
+            <th><a href="/Room/UpdateRoom/@item.Id/" class="btn btn-success">Güncelle</a></th>
+            <th><a href="#" class="btn btn-dark">Detay</a></th>
+
+        </tr>
+    }
+
+</table>
+<a href="/Room/AddRoom/" class="btn btn-primary">Hizmet ekle</a>

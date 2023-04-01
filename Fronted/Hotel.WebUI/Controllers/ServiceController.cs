@@ -10,7 +10,7 @@ namespace Hotel.WebUI.Controllers
     public class ServiceController : Controller
     {
         private readonly HttpClient _httpClient;
-        private readonly string _apiAdres = "https://localhost:7064/api/Service";
+        private readonly string _apiAdres = "https://localhost:7064/api/Room";
         private readonly IToastNotification _toastNotification;
 
         public ServiceController(HttpClient httpClient, IToastNotification toastNotification)
