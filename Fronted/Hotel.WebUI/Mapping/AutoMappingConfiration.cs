@@ -16,7 +16,7 @@ namespace Hotel.WebUI.Mapping
             CreateMap<ResultRoomDto, Room>().ReverseMap();
             CreateMap<CreateRoomDto, Room>().ReverseMap();
             CreateMap<UpdateRoomDto, Room>().ReverseMap();
-            CreateMap<DeleteRoomDto, Room>().ReverseMap();
+            CreateMap<MoveToArcihiveRoomDto, Room>().ReverseMap();
         }
     }
 }

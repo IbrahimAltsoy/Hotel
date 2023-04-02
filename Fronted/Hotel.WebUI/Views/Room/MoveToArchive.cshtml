@@ -1,0 +1,66 @@
+﻿@model MoveToArcihiveRoomDto
+@{
+    ViewData["Title"] = "MoveToArchive";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Oda Arşiv Bölümüne Taşıma Sayfasına Hoşgeldiniz</h1>
+<div class="row">
+    <div class="col-md-4">
+        <div class="col-md-4">
+            <form asp-action="MoveToArchive">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input asp-for="Id" class="form-control" type="hidden" />
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" readonly/>
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" readonly="readonly" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Image" class="control-label"></label>
+                    <input asp-for="Image" class="form-control" type="text" readonly="readonly" />
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" type="text" readonly="readonly" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RoomNumber" class="control-label"></label>
+                    <input asp-for="RoomNumber" class="form-control" type="text" readonly="readonly" />
+                    <span asp-validation-for="RoomNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="BedCount" class="control-label"></label>
+                    <input asp-for="BedCount" class="form-control" type="text" readonly="readonly" />
+                    <span asp-validation-for="BedCount" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="BathCount" class="control-label"></label>
+                    <input asp-for="BathCount" class="form-control" type="text" readonly="readonly" />
+                    <span asp-validation-for="BathCount" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Wifi" readonly="readonly" /> @Html.DisplayNameFor(model => model.Wifi)
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Güncelle" class="btn btn-primary" />   <a class="btn btn-success" href="/Room/Index/">Listeye Dön</a>
+                </div>
+            </form>
+    </div>
+</div>
+
+</div>

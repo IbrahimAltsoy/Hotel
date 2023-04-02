@@ -41,21 +41,19 @@ namespace Hotel.WebApi.Controllers
             }
 			
 		}
-		[HttpDelete]
-		public async Task<IActionResult> DeleteRoom(Guid id)
-		{
-            var model = await _service.GetByIdAsync(id);
-            return Ok(await _service.SafeDeletedAsync(model));
+		//[HttpPut("{id}")]
+		//public async Task<IActionResult> DeleteRoom(Guid id)
+		//{
+  //          var model = await _service.GetByIdAsync(id);
+  //          return Ok(await _service.SafeDeletedAsync(model));
 
-        }
+  //      }
 		[HttpDelete("{id}")]
 		public async Task<IActionResult> AllDeleteRoom(Guid id)
 		{
 			var model = await _service.GetByIdAsync(id);
 			
-			await _service.CompletelyDeletedAsync(model.Id);
-			int a = 5;
-
+			await _service.CompletelyDeletedAsync(model.Id);			
             return Ok();
 
 		}

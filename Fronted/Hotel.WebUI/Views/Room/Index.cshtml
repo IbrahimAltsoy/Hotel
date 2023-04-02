@@ -12,7 +12,7 @@
         <th>Oda Numarası</th>        
         <th>Açıklama</th>
         <th>Fotoğraf</th>
-        <th>Sil</th>
+        <th>Arşive Al</th>
         <th>Güncelle</th>
         <th>Detaylar</th>
 
@@ -27,10 +27,10 @@
             <th>@item.Title</th>
             <th>@item.Description</th>
             <th>@item.Image</th>
-            
-            <th><a href="/Room/DeleteRoom/@item.Id/" class="btn btn-danger">Sil</a></th>
+
+            <th><a href="/Room/MoveToArchive/@item.Id/" class="btn btn-danger">Arşive Al</a></th>
             <th><a href="/Room/UpdateRoom/@item.Id/" class="btn btn-success">Güncelle</a></th>
-            <th><a href="#" class="btn btn-dark">Detay</a></th>
+            <th><a href="/Room/DeleteRoom/@item.Id/" class="btn btn-dark">Detay</a></th>
 
         </tr>
     }
