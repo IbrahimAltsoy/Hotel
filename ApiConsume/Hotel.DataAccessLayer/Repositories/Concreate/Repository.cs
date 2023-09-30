@@ -7,9 +7,9 @@ namespace Hotel.DataAccessLayer.Repositories.Concreate
 {
 	public class Repository<T> : IRepository<T> where T : class, IEntity, new()
     {
-		private readonly DbContext _context;
+		private readonly AppDbContext _context;
 
-		public Repository(DbContext _dbContext)
+		public Repository(AppDbContext _dbContext)
 		{
 			this._context = _dbContext;
 		}

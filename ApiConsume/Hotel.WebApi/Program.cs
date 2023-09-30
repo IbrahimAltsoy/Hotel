@@ -1,7 +1,7 @@
 using Hotel.BusinessLayer.Abstract;
 using Hotel.BusinessLayer.Concreate;
 using Hotel.BusinessLayer.Extensitions;
-using Hotel.DataAccessLayer.Context;
+using Hotel.DataAccessLayer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddDbContext<Context>();
+builder.Services.AddDbContext<AppDbContext>();
 
 builder.Services.LoadServicesLayerExtensions();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -139,27 +139,27 @@ namespace Hotel.WebUI.Controllers
             return View(arcihiveRoomDto);
         }
 
-        public async Task<ActionResult> DeleteRoom(Guid id)
-        {
-            var model = await _httpClient.GetFromJsonAsync<DeleteRoomDto>(_apiAdres + "/" + id);
-            return View(model);
-        }
+        //public async Task<ActionResult> DeleteRoom(Guid id)
+        //{
+        //    var model = await _httpClient.GetFromJsonAsync<DeleteRoomDto>(_apiAdres + "/" + id);
+        //    return View(model);
+        //}
 
-        // POST: BrandsController/Delete/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteRoom(int id, DeleteRoomDto deleteRoomDto)
-        {
-            try
-            {
-                var sonuc = await _httpClient.DeleteAsync(_apiAdres + "/" + id);
-                if (sonuc.IsSuccessStatusCode) return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                ModelState.AddModelError("", "Hata Oluştu!");
-            }
-            return View(deleteRoomDto);
-        }
+        //POST: BrandsController/Delete/5
+        //[HttpDelete("{id}")]
+        //public async Task<ActionResult> DeleteRoom(int id, DeleteRoomDto deleteRoomDto)
+        //{
+        //    try
+        //    {
+        //        var sonuc = await _httpClient.DeleteAsync(_apiAdres + "/" + id);
+        //        if (sonuc.IsSuccessStatusCode) return RedirectToAction(nameof(Index));
+        //    }
+        //    catch
+        //    {
+        //        ModelState.AddModelError("", "Hata Oluştu!");
+        //    }
+        //    return View(deleteRoomDto);
+        //}
         //[HttpDelete("{id}")]
         //public async Task<IActionResult> DeleteRoom(Guid id)
         //{

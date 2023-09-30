@@ -1,8 +1,6 @@
-﻿using Hotel.EntitiyLayer.Concreate;
-using Hotel.WebUI.Dtos.ServiceDto;
+﻿using Hotel.WebUI.Dtos.ServiceDto;
 using Microsoft.AspNetCore.Mvc;
 using NToastNotify;
-using System.Drawing.Drawing2D;
 using static Hotel.WebUI.ToastrMessage.ToastrMessage;
 
 namespace Hotel.WebUI.Controllers
@@ -10,7 +8,7 @@ namespace Hotel.WebUI.Controllers
     public class ServiceController : Controller
     {
         private readonly HttpClient _httpClient;
-        private readonly string _apiAdres = "https://localhost:7064/api/Room";
+        private readonly string _apiAdres = "https://localhost:7064/api/Service";
         private readonly IToastNotification _toastNotification;
 
         public ServiceController(HttpClient httpClient, IToastNotification toastNotification)

@@ -1,10 +1,10 @@
 ﻿using Hotel.EntitiyLayer.Concreate;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
 
-namespace Hotel.DataAccessLayer.Context
+namespace Hotel.DataAccessLayer
 {
-    public class Context : DbContext
+    public class AppDbContext : IdentityDbContext<AppUser, AppRole, Guid>
     {
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Service> Services { get; set; }
