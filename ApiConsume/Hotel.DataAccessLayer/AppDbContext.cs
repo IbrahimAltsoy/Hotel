@@ -12,6 +12,7 @@ namespace Hotel.DataAccessLayer
         public DbSet<Stuff> Stuffs { get; set; }
         public DbSet<Subscribe> Subscribes { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
+        public DbSet<About> Abouts { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
