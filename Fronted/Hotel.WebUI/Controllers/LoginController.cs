@@ -25,17 +25,12 @@ namespace Hotel.WebUI.Controllers
             {
                 var result = await _signInManager.PasswordSignInAsync(_user.UserName, _user.Password, false, true);
                 if(result.Succeeded)
-                {
-                    
-                  return  RedirectToAction("Index", "Room");
-                    
-                }
+                    return RedirectToAction("Index", "Room");
+                else return View();
 
-                else 
-                {
-                    return View(); 
-                }
-                   
+
+
+
             }
             return View();
 

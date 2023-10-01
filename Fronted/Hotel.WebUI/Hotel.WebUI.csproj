@@ -31,4 +31,8 @@
     <ProjectReference Include="..\..\ApiConsume\Hotel.EntitiyLayer\Hotel.EntitiyLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="NewFolder\" />
+  </ItemGroup>
+
 </Project>
