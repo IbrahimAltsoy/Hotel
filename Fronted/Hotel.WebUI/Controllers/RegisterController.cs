@@ -28,7 +28,7 @@ namespace Hotel.WebUI.Controllers
                 Name = _user.Name,
                 Surname = _user.Surname,
                 Email = _user.Mail,
-                UserName = _user.Name,
+                UserName = _user.Username,
                 City = _user.City
                 
 
