@@ -4,6 +4,7 @@ using Hotel.WebUI.Dtos.AppUserDto;
 using Hotel.WebUI.Dtos.LoginDto;
 using Hotel.WebUI.Dtos.RoomDto;
 using Hotel.WebUI.Dtos.ServiceDto;
+using Hotel.WebUI.Dtos.TestimonialDto;
 
 namespace Hotel.WebUI.Mapping
 {
@@ -21,6 +22,7 @@ namespace Hotel.WebUI.Mapping
             CreateMap<MoveToArcihiveRoomDto, Room>().ReverseMap();
             CreateMap<Create_AppUser_Dto, AppUser>().ReverseMap();
             CreateMap<Login_User_Dto, AppUser>().ReverseMap();
+            CreateMap<ResultTestimonialDto, Testimonial>().ReverseMap();
         }
     }
 }

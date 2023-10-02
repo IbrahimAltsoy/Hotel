@@ -28,10 +28,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\ApiConsume\Hotel.DataAccessLayer\Hotel.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\..\ApiConsume\Hotel.DtoLayer\Hotel.DtoLayer.csproj" />
     <ProjectReference Include="..\..\ApiConsume\Hotel.EntitiyLayer\Hotel.EntitiyLayer.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Models\About\" />
     <Folder Include="NewFolder\" />
   </ItemGroup>
 
