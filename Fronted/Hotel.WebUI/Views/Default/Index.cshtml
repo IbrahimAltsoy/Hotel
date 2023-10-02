@@ -43,7 +43,7 @@
         @await Component.InvokeAsync("_UITeamStart")
         <!-- Team End -->
         <!-- Newsletter Start -->
-        @await Component.InvokeAsync("_UINewsLetterStart")
+        @await Html.PartialAsync("CreateSubscribe")
         <!-- Newsletter End -->
         <!-- Footer Start -->
         @await Component.InvokeAsync("_UIFooter")

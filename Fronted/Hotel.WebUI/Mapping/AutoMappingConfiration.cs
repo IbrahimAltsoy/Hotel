@@ -4,7 +4,10 @@ using Hotel.WebUI.Dtos.AppUserDto;
 using Hotel.WebUI.Dtos.LoginDto;
 using Hotel.WebUI.Dtos.RoomDto;
 using Hotel.WebUI.Dtos.ServiceDto;
+using Hotel.WebUI.Dtos.StuffDto;
+using Hotel.WebUI.Dtos.Subscribe;
 using Hotel.WebUI.Dtos.TestimonialDto;
+using Hotel.WebUI.Dtos.UINewsLetterStart;
 
 namespace Hotel.WebUI.Mapping
 {
@@ -23,6 +26,11 @@ namespace Hotel.WebUI.Mapping
             CreateMap<Create_AppUser_Dto, AppUser>().ReverseMap();
             CreateMap<Login_User_Dto, AppUser>().ReverseMap();
             CreateMap<ResultTestimonialDto, Testimonial>().ReverseMap();
+            CreateMap<ResultStuffDto, Stuff>().ReverseMap();
+            CreateMap<Create_SubscribeDto, Subscribe>().ReverseMap();
+            CreateMap<ResultSubscribeDto, Subscribe>().ReverseMap();
+            CreateMap<UpdateSubscribeDto, Subscribe>().ReverseMap();
+            CreateMap<DeleteSubscribeDto, Subscribe>().ReverseMap();
         }
     }
 }
