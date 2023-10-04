@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Hotel.BusinessLayer.Abstract;
+using Hotel.BusinessLayer.Concreate;
 using Hotel.DtoLayer.Dtos.BookingDto;
 using Hotel.DtoLayer.Dtos.SubscribeDto;
 using Hotel.EntitiyLayer.Concreate;
@@ -14,10 +15,11 @@ namespace Hotel.WebApi.Controllers
     {
         private readonly IService<Booking> _service;
         private readonly IMapper _mapper;
+        private readonly IBookingService _bookingService;
 
-        public BookingController(IService<Booking> service, IMapper mapper)
+        public BookingController(IService<Booking> service, IMapper mapper, IBookingService bookingService)
         {
-
+            _bookingService = bookingService;
             _service = service;
             _mapper = mapper;
         }
@@ -73,6 +75,14 @@ namespace Hotel.WebApi.Controllers
         {
             var model = await _service.GetByIdAsync(id);
             return Ok(model);
+        }
+        [HttpGet("id")]
+        public IActionResult UpdateBookingStatus(Guid id)
+        {
+            _bookingService.BookingStatusChangeApproved(id);
+           
+
+            return Ok();
         }
     }
 }

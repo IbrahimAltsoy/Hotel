@@ -27,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\ApiConsume\Hotel.BusinessLayer\Hotel.BusinessLayer.csproj" />
     <ProjectReference Include="..\..\ApiConsume\Hotel.DataAccessLayer\Hotel.DataAccessLayer.csproj" />
     <ProjectReference Include="..\..\ApiConsume\Hotel.DtoLayer\Hotel.DtoLayer.csproj" />
     <ProjectReference Include="..\..\ApiConsume\Hotel.EntitiyLayer\Hotel.EntitiyLayer.csproj" />
@@ -34,7 +35,6 @@
 
   <ItemGroup>
     <Folder Include="Models\About\" />
-    <Folder Include="NewFolder\" />
   </ItemGroup>
 
 </Project>

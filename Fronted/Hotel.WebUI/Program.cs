@@ -1,3 +1,5 @@
+using Hotel.BusinessLayer.Abstract;
+using Hotel.BusinessLayer.Concreate;
 using Hotel.DataAccessLayer;
 using Hotel.EntitiyLayer.Concreate;
 using NToastNotify;
@@ -15,6 +17,7 @@ builder.Services.AddControllersWithViews()
 
     });
 builder.Services.AddDbContext<AppDbContext>();
+builder.Services.AddScoped<IBookingService, BookingService>();
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<AppDbContext>();
 builder.Services.AddAutoMapper(typeof(Program)); //AutoMapper için eklenen alandýr
 var app = builder.Build();

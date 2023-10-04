@@ -1,7 +1,9 @@
 ﻿using Hotel.BusinessLayer.Abstract;
 using Hotel.BusinessLayer.Concreate;
+using Hotel.EntitiyLayer.Concreate;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+
 
 namespace Hotel.BusinessLayer.Extensitions
 {
@@ -22,6 +24,7 @@ namespace Hotel.BusinessLayer.Extensitions
 			services.AddScoped<ITestimonialService, TestimonialService>();
 			services.AddScoped<IAboutService, AboutService>();
 			services.AddScoped<IBookingService, BookingService>();
+			
            
             //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             //services.AddAutoMapper(assembly);

@@ -1,0 +1,48 @@
+﻿@model List<ApiMoviViewModel>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+          rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+          rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css"
+          rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <br />
+        <table class="table table-bordered">
+            <tr>
+                <th>Film Adı</th>
+                <th>Açıklama</th>
+                <th>Görsel</th>
+                <th>Fragman</th>
+                <th>Imdb Puanı</th>
+                <th>Rank</th>
+            </tr>
+            @foreach(var item in Model){
+            <tr>
+
+                    <td>@item.title</td>
+                    <td>@item.description.Substring(0,20)</td>
+                    <td><img style="height: 50px; width:50px;" src="@item.image"></img> </td>
+                    <td><a href="@item.trailer" class="btn btn-info">Fragmanı İzle</a></td>
+                    <td>@item.rating</td>
+                    <td>@item.rank</td>
+            </tr>
+            }
+        </table>
+
+    </div>
+</body>
+</html>
