@@ -27,7 +27,7 @@ namespace Hotel.WebUI.ViewComponents.UI
 
                 var jsonData = await response.Content.ReadAsStringAsync();
                 var model = JsonConvert.DeserializeObject<List<ResultServiceDto>>(jsonData);
-                return View(model);
+                return View(model.Take(6).ToList());
             }
             return View();
         }

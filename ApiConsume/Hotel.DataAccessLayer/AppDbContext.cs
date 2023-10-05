@@ -1,9 +1,11 @@
 ﻿using Hotel.EntitiyLayer.Concreate;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Runtime.InteropServices;
 
 namespace Hotel.DataAccessLayer
 {
+ 
     public class AppDbContext : IdentityDbContext<AppUser, AppRole, Guid>
     {
         public DbSet<Room> Rooms { get; set; }
@@ -14,6 +16,8 @@ namespace Hotel.DataAccessLayer
         public DbSet<Testimonial> Testimonials { get; set; }
         public DbSet<About> Abouts { get; set; }
         public DbSet<Booking> Bookings { get; set; }
+        public DbSet<Guest> Guests { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

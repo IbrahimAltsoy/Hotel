@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Hotel.EntitiyLayer.Concreate;
 using Hotel.WebUI.Dtos.AppUserDto;
+using Hotel.WebUI.Dtos.ContactDto;
 using Hotel.WebUI.Dtos.LoginDto;
 using Hotel.WebUI.Dtos.RoomDto;
 using Hotel.WebUI.Dtos.ServiceDto;
@@ -31,6 +32,10 @@ namespace Hotel.WebUI.Mapping
             CreateMap<ResultSubscribeDto, Subscribe>().ReverseMap();
             CreateMap<UpdateSubscribeDto, Subscribe>().ReverseMap();
             CreateMap<DeleteSubscribeDto, Subscribe>().ReverseMap();
+            CreateMap<CreateContactDto, Contact>().ReverseMap();
+            CreateMap<DeleteContactDto, Contact>().ReverseMap();
+            CreateMap<ResultContactDto, Contact>().ReverseMap();
+            CreateMap<UpdateContactDto, Contact>().ReverseMap();
         }
     }
 }
