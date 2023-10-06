@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ResultAboutDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var count = 0;
+}
+
+<h1>Ahkkımızda Sayfasına Hoşgeldiniz</h1>
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Başlık-1</th>
+        <th>Başlık-2</th>
+        <th>İçerik</th>
+        <th>Müsteri </th>
+        <th>Staff</th>
+        <th>Oda</th>
+        <th>Durum</th>
+
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+
+        <tr>
+            <th>@count</th>
+            <th>@item.Title1</th>
+            <th>@item.Title2</th>
+            <th>
+                @if (item.Content.Length < 20)
+                {
+                    @item.Content
+                }
+                else
+                {
+                    @item.Content.Substring(0,20)
+                    
+            }
+            ..
+                
+                </th>
+            <th>@item.CustomerCount</th>
+            <th>@item.StaffCount</th>
+            <th>@item.RoomCount</th>
+            <th><a href="/AdminAbout/DeleteAbout/@item.Id/" class="btn btn-danger">Sil</a>|<a href="/AdminAbout/UpdateAbout/@item.Id/" class="btn btn-success">Güncelle</a>|<a href="#" class="btn btn-dark">Detay</a></th>
+            
+
+        </tr>
+    }
+
+</table>
+<a href="/AdminAbout/AddAbout/" class="btn btn-primary">Personel ekle</a>
+

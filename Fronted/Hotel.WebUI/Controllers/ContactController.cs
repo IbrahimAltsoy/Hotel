@@ -19,14 +19,16 @@ namespace Hotel.WebUI.Controllers
             _httpClient = httpClient;
             _clientFactory = clientFactory;
         }
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var model = await _httpClient.GetFromJsonAsync<List<ResultContactDto>>(_apiAdres);
-            return View(model);
-        }
-        public async Task<ActionResult> AddContact()
-        {
+            //var model = await _httpClient.GetFromJsonAsync<List<ResultContactDto>>(_apiAdres);
+
             return View();
+        }
+        [HttpGet]
+        public async Task<PartialViewResult> AddContact()
+        {
+            return PartialView();
         }
         [HttpPost]
         public async Task<ActionResult> AddContact(CreateContactDto createContactDto)
@@ -44,7 +46,7 @@ namespace Hotel.WebUI.Controllers
                         {
                             Title = "Başarılı"
                         });
-                        return RedirectToAction(nameof(Index));
+                        return RedirectToAction(nameof(Index),"Default");
                     }
 
                 }
@@ -99,42 +101,6 @@ namespace Hotel.WebUI.Controllers
 
             return View(updateContactDto);
         }
-        //public async Task<ActionResult> MoveToArchive(Guid id)
-        //{
-        //    var model = await _httpClient.GetFromJsonAsync<MoveToArcihiveRoomDto>(_apiAdres + "/" + id);
-        //    return View(model);
-        //}
-        //[HttpPost]
-        //public async Task<ActionResult> MoveToArchive(Guid id, MoveToArcihiveRoomDto arcihiveRoomDto)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            var response = await _httpClient.PutAsJsonAsync(_apiAdres + "/" + id, arcihiveRoomDto);
-        //            if (response.IsSuccessStatusCode)
-        //            {
-        //                _toastNotification.AddSuccessToastMessage(MessajeToastr.ToastrUpdateSuccesfull("Oldu"),
-        //                new ToastrOptions
-        //                {
-        //                    Title = "Başarılı"
-        //                });
-        //                return RedirectToAction(nameof(Index));
-        //            }
-
-        //        }
-        //        catch
-        //        {
-        //            _toastNotification.AddSuccessToastMessage(MessajeToastr.ToastrUpdateUnSuccessfull("Olmadı"),
-        //                new ToastrOptions
-        //                {
-        //                    Title = "Başarısız"
-        //                });
-        //            ModelState.AddModelError("", "Hata Oluştu!");
-        //        }
-        //    }
-
-        //    return View(arcihiveRoomDto);
-        //}
+       
     }
 }
