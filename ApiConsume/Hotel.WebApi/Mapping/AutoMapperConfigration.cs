@@ -2,6 +2,7 @@
 using Hotel.DtoLayer.Dtos.AboutDto;
 using Hotel.DtoLayer.Dtos.BookingDto;
 using Hotel.DtoLayer.Dtos.ContactDto;
+using Hotel.DtoLayer.Dtos.GuestDto;
 using Hotel.DtoLayer.Dtos.RoomDto;
 using Hotel.DtoLayer.Dtos.ServiceDto;
 using Hotel.DtoLayer.Dtos.SubscribeDto;
@@ -25,6 +26,8 @@ namespace Hotel.WebApi.Mapping
             CreateMap<UpdateBookingDto, Booking>().ReverseMap();
             CreateMap<AddContactDto, Contact>().ReverseMap();
             CreateMap<UpdateContactDto, Contact>().ReverseMap();
+            CreateMap<Create_Guest_Dto, Guest>().ReverseMap();
+            CreateMap<Update_Guest_dto, Guest>().ReverseMap();
             
 
 

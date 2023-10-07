@@ -3,6 +3,7 @@ using Hotel.EntitiyLayer.Concreate;
 using Hotel.WebUI.Dtos.AboutDto;
 using Hotel.WebUI.Dtos.AppUserDto;
 using Hotel.WebUI.Dtos.ContactDto;
+using Hotel.WebUI.Dtos.GuestDto;
 using Hotel.WebUI.Dtos.LoginDto;
 using Hotel.WebUI.Dtos.RoomDto;
 using Hotel.WebUI.Dtos.ServiceDto;
@@ -39,7 +40,10 @@ namespace Hotel.WebUI.Mapping
             CreateMap<CreateAboutDto, About>().ReverseMap();
             CreateMap<UpdateAboutDto, About>().ReverseMap();
             CreateMap<DeleteAboutDto, About>().ReverseMap();
-            CreateMap<DeleteAboutDto, About>().ReverseMap();
+            CreateMap<CreateGuestDto, Guest>().ReverseMap();
+            CreateMap<UpdateGuestDto, Guest>().ReverseMap();
+            CreateMap<DeleteGuestDto, Guest>().ReverseMap();
+            CreateMap<ResultGuestDto, Guest>().ReverseMap();
             
         }
     }
