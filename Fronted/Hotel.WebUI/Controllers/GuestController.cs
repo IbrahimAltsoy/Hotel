@@ -10,7 +10,7 @@ namespace Hotel.WebUI.Controllers
     {
         private readonly HttpClient _httpClient;
         private readonly IHttpClientFactory _clientFactory;
-        private readonly string _apiAdres = "https://localhost:7064/api/Room";
+        private readonly string _apiAdres = "https://localhost:7064/api/Guest";
         private readonly IToastNotification _toastNotification;
 
         public GuestController(IToastNotification toastNotification, HttpClient httpClient, IHttpClientFactory clientFactory)
@@ -104,7 +104,7 @@ namespace Hotel.WebUI.Controllers
         public async Task<IActionResult> DeleteGuest(Guid id)
         {
             var client = _clientFactory.CreateClient();
-            var response = await client.DeleteAsync($"https://localhost:7064/api/Stuff/{id}");
+            var response = await client.DeleteAsync($"https://localhost:7064/api/Guest/{id}");
             if (response.IsSuccessStatusCode)
             {
 
@@ -112,6 +112,11 @@ namespace Hotel.WebUI.Controllers
 
             }
             return View();
+        }
+        public async Task<ActionResult> MoveToArchive(Guid id)
+        {
+            var model = await _httpClient.GetFromJsonAsync<MoveToArcihiveGuestDto>(_apiAdres + "/" + id);
+            return View(model);
         }
 
 

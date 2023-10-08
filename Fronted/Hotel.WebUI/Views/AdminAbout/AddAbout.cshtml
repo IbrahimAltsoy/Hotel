@@ -1,0 +1,37 @@
+﻿@model CreateAboutDto
+@{
+    ViewData["Title"] = "AddAbout";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h1>Hakkımızda bilgi ekleme sayfasına Hoşgeldiniz</h1>
+
+<form method="post" asp-action="AddAbout" asp-controller="AdminAbout">
+    
+
+    <label>Başlık-1</label>
+    <input type="text" asp-for="Title1" class="form-control" />
+    <br />
+    <label>Başlık-2</label>
+    <input type="text" asp-for="Title2" class="form-control" />
+    <br />
+    <label>İçerik</label>
+    <input type="text" asp-for="Content" class="form-control" />
+    <br />
+    <label>Müsteri Sayısı</label>
+    <input type="text" asp-for="CustomerCount" class="form-control" />
+    <br />
+    <label>Staff Sayısı</label>
+    <input type="text" asp-for="StaffCount" class="form-control" />
+    <br />
+    <label>Oda Sayısı</label>
+    <input type="text" asp-for="RoomCount" class="form-control" />
+    <br />
+    <label class="form-check-label">
+        <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+    </label>
+    <br />
+    <button class="btn btn-outline-success">Ekle</button>
+</form>
+

@@ -10,6 +10,6 @@
         public int StaffCount { get; set; }
         public int RoomCount { get; set; }
 
-        public bool IsActive { get; set; } = false;
+        public bool IsActive { get; set; } = true;
     }
 }
