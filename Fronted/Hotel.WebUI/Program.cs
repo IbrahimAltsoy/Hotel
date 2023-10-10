@@ -1,7 +1,11 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Hotel.BusinessLayer.Abstract;
 using Hotel.BusinessLayer.Concreate;
 using Hotel.DataAccessLayer;
 using Hotel.EntitiyLayer.Concreate;
+using Hotel.WebUI.Dtos.GuestDto;
+using Hotel.WebUI.Validation.GuestValidation;
 using NToastNotify;
 using System;
 
@@ -9,14 +13,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddHttpClient();//Api projesi
-builder.Services.AddControllersWithViews()    
+builder.Services.AddControllersWithViews()
     .AddNToastNotifyToastr(new ToastrOptions()
     {
         PositionClass = ToastPositions.TopRight,
         TimeOut = 3000
 
-    });
+    })
+    .AddFluentValidation();
 builder.Services.AddDbContext<AppDbContext>();
+builder.Services.AddTransient<IValidator<CreateGuestDto>, Create_Guest_Validation>();
 builder.Services.AddScoped<IBookingService, BookingService>();
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<AppDbContext>();
 builder.Services.AddAutoMapper(typeof(Program)); //AutoMapper için eklenen alandýr
