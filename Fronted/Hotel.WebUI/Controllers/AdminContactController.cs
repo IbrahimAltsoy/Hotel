@@ -21,7 +21,7 @@ namespace Hotel.WebUI.Controllers
         }
         public async Task<IActionResult> Inbox()
         {
-            var model = await _httpClient.GetFromJsonAsync<List<ResultContactDto>>(_apiAdres);
+            var model = await _httpClient.GetFromJsonAsync<List<ResultSenderMessage>>("https://localhost:7064/api/SenderMessage");
             return View(model);
         }
         public PartialViewResult SideBarAdminContactPartial()
@@ -110,5 +110,18 @@ namespace Hotel.WebUI.Controllers
 
             return View(updateSenderMessage);
         }
+        [HttpGet]
+        public async Task<IActionResult> MessageDetailsSendBox(Guid id)
+        {
+            var model = await _httpClient.GetFromJsonAsync<UpdateSenderMessage>("https://localhost:7064/api/SenderMessage" + "/" + id);
+            return View(model);
+        }
+        [HttpGet]
+        public async Task<IActionResult> MessageDetailsInbox(Guid id)
+        {
+            var model = await _httpClient.GetFromJsonAsync<ResultContactDto>("https://localhost:7064/api/Contact" + "/" + id);
+            return View(model);
+        }
+
     }
 }
