@@ -1,10 +1,12 @@
 ﻿using Hotel.WebUI.Dtos.BookingDto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NToastNotify;
 using static Hotel.WebUI.ToastrMessage.ToastrMessage;
 
 namespace Hotel.WebUI.Controllers
 {
+    [AllowAnonymous]
     public class BookingController : Controller
     {
         private readonly HttpClient _httpClient;

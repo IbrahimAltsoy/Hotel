@@ -1,5 +1,6 @@
 ﻿using Hotel.DtoLayer.Dtos.AboutDto;
 using Hotel.WebUI.Dtos.UINewsLetterStart;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using NToastNotify;
@@ -7,6 +8,7 @@ using static Hotel.WebUI.ToastrMessage.ToastrMessage;
 
 namespace Hotel.WebUI.Controllers
 {
+    [AllowAnonymous]
     public class DefaultController : Controller
     {
         private readonly IHttpClientFactory _clientFactory;
@@ -61,6 +63,11 @@ namespace Hotel.WebUI.Controllers
             }
 
             return View(subscribeDto);
+        }
+        public IActionResult ErrorNumber(int errorNumber)
+        {
+
+            return View();
         }
     }
 }

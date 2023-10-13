@@ -1,11 +1,13 @@
 ﻿using Hotel.WebUI.Dtos.ContactDto;
 using Hotel.WebUI.Dtos.RoomDto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NToastNotify;
 using static Hotel.WebUI.ToastrMessage.ToastrMessage;
 
 namespace Hotel.WebUI.Controllers
 {
+    [AllowAnonymous]
     public class ContactController : Controller
     {
         private readonly HttpClient _httpClient;
