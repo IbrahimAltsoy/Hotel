@@ -23,6 +23,7 @@ namespace Hotel.WebApi.Controllers
         public async Task<IActionResult> SenderMessages()
         {
             var model = await _service.GetAllIsActiveTrueAsync();
+            
             return Ok(model);
         }
         [HttpPost]
@@ -70,6 +71,15 @@ namespace Hotel.WebApi.Controllers
         {
             var model = await _service.GetByIdAsync(id);
             return Ok(model);
+        }
+        [HttpGet("SenderMessageCount")]
+        public async Task<IActionResult> SenderMessageCount()
+        {
+            var model =await _service.GetAllIsActiveTrueAsync();
+
+            return Ok(model.Count());
+
+             
         }
 
     }

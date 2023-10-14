@@ -73,5 +73,12 @@ namespace Hotel.WebApi.Controllers
             var model = await _service.GetByIdAsync(id);
             return Ok(model);
         }
+        //[HttpGet("GetContactCount")]
+        //public async Task<IActionResult> GetContactCount()
+        //{
+        //    var model = await _service.GetAllIsActiveTrueAsync();
+           
+        //    return Ok(model.Count());
+        //}
     }
 }

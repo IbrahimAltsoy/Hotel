@@ -42,8 +42,8 @@
                                     {
                                         <div class="subject">@item.Message.Substring(0,40) ..</div>
                                     } *@
-                                    <b>Konu: @item.Title</b> Gönderen: @item.ReceiverName
-                                        <div class="date">@((((DateTime)item.CreatedDate).ToString("dd-MMM-yyyy")))</div>
+                        <b>Gönderen: @item.ReceiverEmail   </b>   Konu: @item.Title
+                        <div class="date">@((((DateTime)item.CreatedDate).ToString("dd-MMM-yyyy")))</div>
                                     </div>
                                 </a>
                             </div>

@@ -22,10 +22,22 @@ namespace Hotel.WebUI.Controllers
         public async Task<IActionResult> Inbox()
         {
             var model = await _httpClient.GetFromJsonAsync<List<ResultSenderMessage>>("https://localhost:7064/api/SenderMessage");
+            var model1 = await _httpClient.GetFromJsonAsync<List<ResultContactDto>>("https://localhost:7064/api/Contact");
+            ViewBag.countSenderMessage = model.Count();
+            ViewBag.countContact = model1.Count();
+
             return View(model);
         }
-        public PartialViewResult SideBarAdminContactPartial()
+        //public async Task<IActionResult> SenderMessage()
+        //{
+        //    var model = await _httpClient.GetFromJsonAsync<List<ResultSenderMessage>>("https://localhost:7064/api/SenderMessage");
+
+        //    return View(model);
+        //}
+        public async Task<PartialViewResult> SideBarAdminContactPartial()
         {
+            var model = await _httpClient.GetFromJsonAsync<List<ResultSenderMessage>>("https://localhost:7064/api/SenderMessage");
+            
             return new PartialViewResult();
         }
         public PartialViewResult SideBarCategoryAdminContactPartial()
