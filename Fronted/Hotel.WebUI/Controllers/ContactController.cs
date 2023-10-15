@@ -1,8 +1,12 @@
-﻿using Hotel.WebUI.Dtos.ContactDto;
+﻿using Hotel.BusinessLayer.Abstract;
+using Hotel.WebUI.Dtos.CategoryMessage;
+using Hotel.WebUI.Dtos.ContactDto;
 using Hotel.WebUI.Dtos.RoomDto;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using NToastNotify;
+using System.Net.Http.Json;
 using static Hotel.WebUI.ToastrMessage.ToastrMessage;
 
 namespace Hotel.WebUI.Controllers
@@ -14,27 +18,38 @@ namespace Hotel.WebUI.Controllers
         private readonly IHttpClientFactory _clientFactory;
         private readonly string _apiAdres = "https://localhost:7064/api/Contact";
         private readonly IToastNotification _toastNotification;
+       
 
         public ContactController(IToastNotification toastNotification, HttpClient httpClient, IHttpClientFactory clientFactory)
         {
             _toastNotification = toastNotification;
             _httpClient = httpClient;
             _clientFactory = clientFactory;
+        
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            //var model = await _httpClient.GetFromJsonAsync<List<ResultContactDto>>(_apiAdres);
+           var model = await _httpClient.GetFromJsonAsync<List<ResultCategoryMessage>>("https://localhost:7064/api/CategoryMessage");
+            List<SelectListItem> list = (from item in model
+                                         select new SelectListItem
+                                         {
+                                             Text = item.Name,
+                                             Value = item.Id.ToString()
+                                         }).ToList(); 
+            ViewBag.ListCategoryMessage = list;
 
             return View();
         }
         [HttpGet]
-        public async Task<PartialViewResult> AddContact()
-        {
+        public PartialViewResult AddContact()
+        {           
+
             return PartialView();
         }
         [HttpPost]
         public async Task<ActionResult> AddContact(CreateContactDto createContactDto)
         {
+          
             if (ModelState.IsValid)
             {
                 try

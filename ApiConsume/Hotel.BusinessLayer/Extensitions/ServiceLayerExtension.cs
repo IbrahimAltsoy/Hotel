@@ -26,6 +26,7 @@ namespace Hotel.BusinessLayer.Extensitions
 			services.AddScoped<IBookingService, BookingService>();
 			services.AddScoped<IContactService, ContactService>();
 			services.AddScoped<ISenderMessageService, SenderMessageService>();
+			services.AddScoped<ICategoryMessageService, CategoryMessageService>();
 			
            
             //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

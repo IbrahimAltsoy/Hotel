@@ -19,6 +19,7 @@ namespace Hotel.DataAccessLayer
         public DbSet<Guest> Guests { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<SenderMessage> SenderMessages { get; set; }
+        public DbSet<CategoryMessage> CategoryMessages { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -2,6 +2,7 @@
 using Hotel.EntitiyLayer.Concreate;
 using Hotel.WebUI.Dtos.AboutDto;
 using Hotel.WebUI.Dtos.AppUserDto;
+using Hotel.WebUI.Dtos.CategoryMessage;
 using Hotel.WebUI.Dtos.ContactDto;
 using Hotel.WebUI.Dtos.GuestDto;
 using Hotel.WebUI.Dtos.LoginDto;
@@ -49,7 +50,13 @@ namespace Hotel.WebUI.Mapping
             CreateMap<CreateSenderMessageDto, SenderMessage>().ReverseMap();
             CreateMap<UpdateSenderMessage, SenderMessage>().ReverseMap();
             CreateMap<ResultSenderMessage, SenderMessage>().ReverseMap();
-            CreateMap<DeleteSenderMessageDto, SenderMessage>().ReverseMap();
+            CreateMap<DeleteSenderMessageDto, SenderMessage>().ReverseMap();          
+            CreateMap<CreateCategoryMessageDto, CategoryMessage>().ReverseMap();
+            CreateMap<UpdateCategoryMessage, CategoryMessage>().ReverseMap();
+            CreateMap<DeleteCategoryMessage, CategoryMessage>().ReverseMap();
+            CreateMap<ResultCategoryMessage, CategoryMessage>().ReverseMap();
+
+
             
             
         }

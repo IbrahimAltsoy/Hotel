@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Hotel.DtoLayer.Dtos.AboutDto;
 using Hotel.DtoLayer.Dtos.BookingDto;
+using Hotel.DtoLayer.Dtos.CategoryMessageDto;
 using Hotel.DtoLayer.Dtos.ContactDto;
 using Hotel.DtoLayer.Dtos.GuestDto;
 using Hotel.DtoLayer.Dtos.RoomDto;
@@ -31,6 +32,8 @@ namespace Hotel.WebApi.Mapping
             CreateMap<Update_Guest_dto, Guest>().ReverseMap();
             CreateMap<AddSenderMessageDto, SenderMessage>().ReverseMap();
             CreateMap<UpdateSenderMessage, SenderMessage>().ReverseMap();
+            CreateMap<AddCategoryMessageDto, CategoryMessage>().ReverseMap();
+            CreateMap<UpdateCategoryMessage, CategoryMessage>().ReverseMap();
             
 
 
