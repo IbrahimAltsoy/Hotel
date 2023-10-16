@@ -10,6 +10,7 @@ namespace Hotel.WebUI.Dtos.AppUserDto
         [Required(ErrorMessage = "Lütfen soyad alanını boş geçmeyiniz.")]
         public string Surname { get; set; }
 
+
         [Required(ErrorMessage = "Lütfen kullanıcı adı alanını boş geçmeyiniz.")]
         public string Username { get; set; }
 
@@ -26,5 +27,7 @@ namespace Hotel.WebUI.Dtos.AppUserDto
         [Compare("Password", ErrorMessage ="Şifreler uyuşmuyor, şifre alanını lütfen kontrol ediniz")]
         public string ConfirmPassword { get; set; }
 
+
+        public Guid? WorkLocationId { get; set; } = Guid.Parse("7f45fef5-6e8b-48ea-887f-43b9b71d0d88");
     }
 }

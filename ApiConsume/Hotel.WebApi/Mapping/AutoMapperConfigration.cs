@@ -8,6 +8,7 @@ using Hotel.DtoLayer.Dtos.RoomDto;
 using Hotel.DtoLayer.Dtos.SenderMessage;
 using Hotel.DtoLayer.Dtos.ServiceDto;
 using Hotel.DtoLayer.Dtos.SubscribeDto;
+using Hotel.DtoLayer.Dtos.WorkLocationDto;
 using Hotel.EntitiyLayer.Concreate;
 
 namespace Hotel.WebApi.Mapping
@@ -34,6 +35,8 @@ namespace Hotel.WebApi.Mapping
             CreateMap<UpdateSenderMessage, SenderMessage>().ReverseMap();
             CreateMap<AddCategoryMessageDto, CategoryMessage>().ReverseMap();
             CreateMap<UpdateCategoryMessage, CategoryMessage>().ReverseMap();
+            CreateMap<AddWorkLocationDto, WorkLocation>().ReverseMap();
+            CreateMap<UpdateWorkLocationDto, WorkLocation>().ReverseMap();
             
 
 

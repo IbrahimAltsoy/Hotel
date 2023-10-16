@@ -4,6 +4,7 @@ using Hotel.DataAccessLayer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hotel.DataAccessLayer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231016062436_mig_Users")]
+    partial class mig_Users
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -156,12 +159,6 @@ namespace Hotel.DataAccessLayer.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("WorkDeparment")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid?>("WorkLocationId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -171,8 +168,6 @@ namespace Hotel.DataAccessLayer.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.HasIndex("WorkLocationId");
 
                     b.ToTable("AspNetUsers", (string)null);
                 });
@@ -528,28 +523,6 @@ namespace Hotel.DataAccessLayer.Migrations
                     b.ToTable("Testimonials");
                 });
 
-            modelBuilder.Entity("Hotel.EntitiyLayer.Concreate.WorkLocation", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CityName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("WorkLocations");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
                     b.Property<int>("Id")
@@ -653,15 +626,6 @@ namespace Hotel.DataAccessLayer.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Hotel.EntitiyLayer.Concreate.AppUser", b =>
-                {
-                    b.HasOne("Hotel.EntitiyLayer.Concreate.WorkLocation", "WorkLocation")
-                        .WithMany("AppUsers")
-                        .HasForeignKey("WorkLocationId");
-
-                    b.Navigation("WorkLocation");
-                });
-
             modelBuilder.Entity("Hotel.EntitiyLayer.Concreate.Contact", b =>
                 {
                     b.HasOne("Hotel.EntitiyLayer.Concreate.CategoryMessage", "CategoryMessage")
@@ -725,11 +689,6 @@ namespace Hotel.DataAccessLayer.Migrations
             modelBuilder.Entity("Hotel.EntitiyLayer.Concreate.CategoryMessage", b =>
                 {
                     b.Navigation("Contacts");
-                });
-
-            modelBuilder.Entity("Hotel.EntitiyLayer.Concreate.WorkLocation", b =>
-                {
-                    b.Navigation("AppUsers");
                 });
 #pragma warning restore 612, 618
         }

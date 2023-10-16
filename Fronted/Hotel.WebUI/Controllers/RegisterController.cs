@@ -31,8 +31,10 @@ namespace Hotel.WebUI.Controllers
                 Surname = _user.Surname,
                 Email = _user.Mail,
                 UserName = _user.Username,
-                City = _user.City
-                
+                City = _user.City,
+                WorkLocationId = _user.WorkLocationId,
+
+
 
             };
             var result = await _userManager.CreateAsync(appUser, _user.Password);

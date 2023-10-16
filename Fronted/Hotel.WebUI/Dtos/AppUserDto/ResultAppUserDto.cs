@@ -1,11 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
-
-namespace Hotel.EntitiyLayer.Concreate
+﻿namespace Hotel.WebUI.Dtos.AppUserDto
 {
-    public class AppUser: IdentityUser<Guid>
+    public class ResultAppUserDto
     {
-        
-
         public string Name { get; set; }
         public string Surname { get; set; }
         public string City { get; set; }
@@ -13,7 +9,5 @@ namespace Hotel.EntitiyLayer.Concreate
         public string? WorkDeparment { get; set; }
         public Guid? WorkLocationId { get; set; }
         public bool? IsActive { get; set; } = false;
-
-        public WorkLocation? WorkLocation { get; set; }
     }
 }

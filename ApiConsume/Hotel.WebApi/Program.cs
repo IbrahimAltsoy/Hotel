@@ -2,12 +2,16 @@ using Hotel.BusinessLayer.Abstract;
 using Hotel.BusinessLayer.Concreate;
 using Hotel.BusinessLayer.Extensitions;
 using Hotel.DataAccessLayer;
+using Hotel.EntitiyLayer.Concreate;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllersWithViews()
+    .AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
 
 builder.Services.AddDbContext<AppDbContext>();
 
