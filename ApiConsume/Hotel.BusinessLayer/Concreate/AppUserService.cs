@@ -4,6 +4,7 @@ using Hotel.EntitiyLayer.Concreate;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace Hotel.BusinessLayer.Concreate
 {
     public class AppUserService:IAppUserService
@@ -23,14 +24,13 @@ namespace Hotel.BusinessLayer.Concreate
 
         public async Task<List<AppUser>> UserListWithWorkLocation()
         {
-            var model = _context.Users.Include(u => u.WorkLocation).ToList();            
+            var model = _context.Users.Include(u => u.WorkLocation).ToList();
+
+           
             return model;
         }
-       
-        //public async Task<List<AppUser>> GetUsers()
-        //{
-        //    return await _userManager.Users.ToListAsync();
-        //}
+
+        
 
 
     }

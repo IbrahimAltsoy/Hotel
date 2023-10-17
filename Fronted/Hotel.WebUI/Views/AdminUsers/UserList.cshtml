@@ -1,0 +1,43 @@
+﻿@model List<ResultAppUserWithWorkLocationDto>
+@{
+    ViewData["Title"] = "UserList";
+     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+           
+            <h1 class="mb-5"><span class="text-primary text-uppercase">Kullanıcı Sayfasına Hoşgeldiniz</span></h1>
+        </div>
+        <div class="row g-4">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="room-item shadow rounded overflow-hidden">
+                        <div class="p-4 mt-2">
+                            <img class="img-fluid" src="@item.ImageUrl" alt="">
+                            
+                        </div>
+                        <div class="p-4 mt-2">
+                            <div class="d-flex justify-content-between mb-3">
+                                <h5 class="mb-0">@item.Name @item.Surname</h5>
+                               
+                            </div>
+                            <div class="d-flex mb-3">
+                                <small class="border-end me-3 pe-3">@item.WorkLocationName</small>
+                                
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+

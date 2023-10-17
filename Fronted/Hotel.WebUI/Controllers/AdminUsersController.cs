@@ -1,5 +1,6 @@
 ﻿using Hotel.EntitiyLayer.Concreate;
 using Hotel.WebUI.Dtos.AppUserDto;
+using Hotel.WebUI.Dtos.CategoryMessage;
 using Hotel.WebUI.Models.Stuff;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -47,6 +48,19 @@ namespace Hotel.WebUI.Controllers
                 return View(model);
             }
             return View();
+        }
+        public async Task<PartialViewResult> UserList()
+        {
+            var client = _clientFactory.CreateClient();
+            var response = await client.GetAsync("https://localhost:7064/api/AppUser");
+            if (response.IsSuccessStatusCode)
+            {
+
+                var jsonData = await response.Content.ReadAsStringAsync();
+                var model = JsonConvert.DeserializeObject<List<ResultAppUserWithWorkLocationDto>>(jsonData);
+                return PartialView(model);
+            }
+            return PartialView();
         }
     }
 }
