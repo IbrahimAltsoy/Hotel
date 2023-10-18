@@ -22,6 +22,10 @@ namespace Hotel.BusinessLayer.Concreate
             await _context.SaveChangesAsync();
             return value; 
         }
+        public int GetBookingCount()
+        {
+            return _context.Bookings.Count();
+        }
         
     }
 }

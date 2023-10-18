@@ -3,15 +3,13 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     int count = 0;
-    int index = 0;
+   
 }
 <div class="row">
     
         @foreach(var item in Model)
         {
-        index++;
-        if (index < 12)
-        {
+       
             @* <partial name="~/Views/AdminUsers/UserList.cshtml" /> *@
             <div class="col-lg-3 col-sm-6">
                 <div class="card">
@@ -25,7 +23,7 @@
                     </div>
                 </div>
             </div>
-        }
+        
         
         }
         

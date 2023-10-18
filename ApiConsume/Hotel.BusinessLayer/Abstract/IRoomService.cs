@@ -1,9 +1,10 @@
-﻿using Hotel.EntitiyLayer.Concreate;
+﻿using Hotel.DataAccessLayer.Repositories.Abstract;
+using Hotel.EntitiyLayer.Concreate;
 
 namespace Hotel.BusinessLayer.Abstract
 {
-	public interface IRoomService
-	{
+	public interface IRoomService: IRoomRepository
+    {
 		
 	}
 }

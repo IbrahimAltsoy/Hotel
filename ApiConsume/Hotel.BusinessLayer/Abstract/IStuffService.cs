@@ -1,7 +1,9 @@
-﻿namespace Hotel.BusinessLayer.Abstract
+﻿using Hotel.DataAccessLayer.Repositories.Abstract;
+
+namespace Hotel.BusinessLayer.Abstract
 {
-	public interface IStuffService
-	{
+	public interface IStuffService : IStuffRepository
+    {
 		
 	}
 }

@@ -29,8 +29,13 @@ namespace Hotel.BusinessLayer.Concreate
            
             return model;
         }
+        public int AppUserCount()
+        {
+            return _context.Users.Count();
+        }
 
-        
+
+
 
 
     }

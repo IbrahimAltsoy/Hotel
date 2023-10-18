@@ -57,7 +57,7 @@ namespace Hotel.WebUI.Controllers
             {
 
                 var jsonData = await response.Content.ReadAsStringAsync();
-                var model = JsonConvert.DeserializeObject<List<ResultAppUserWithWorkLocationDto>>(jsonData);
+                var model =JsonConvert.DeserializeObject<List<ResultAppUserWithWorkLocationDto>>(jsonData);
                 return PartialView(model);
             }
             return PartialView();

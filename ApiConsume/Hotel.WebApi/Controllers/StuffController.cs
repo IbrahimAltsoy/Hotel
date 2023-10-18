@@ -9,12 +9,14 @@ namespace Hotel.WebApi.Controllers
 	{
 		
 		private readonly IService<Stuff> _service;
+		private readonly IStuffService _stuffService;
 
-		public StuffController(IService<Stuff> service)
-		{
-			
-			_service = service;
-		}        
+        public StuffController(IService<Stuff> service, IStuffService stuffService)
+        {
+
+            _service = service;
+            _stuffService = stuffService;
+        }
         [HttpGet]
 		public async Task<IActionResult> Stuffs()
 		{
@@ -44,6 +46,11 @@ namespace Hotel.WebApi.Controllers
 		public async Task<IActionResult> Stuff(Guid id)
 		{			
 			return Ok(await _service.GetByIdAsync(id));
+		}
+		[HttpGet("StuffLastFour")]
+		public async Task<IActionResult> StuffLastFour()
+		{
+			return Ok(await _stuffService.StuffLastFour());
 		}
 	}
 }

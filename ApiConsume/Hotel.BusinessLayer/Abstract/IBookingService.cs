@@ -6,6 +6,7 @@ namespace Hotel.BusinessLayer.Abstract
     {
 
         Task<Booking> BookingStatusChangeApproved(Guid id);
+        int GetBookingCount();
 
     }
 }
