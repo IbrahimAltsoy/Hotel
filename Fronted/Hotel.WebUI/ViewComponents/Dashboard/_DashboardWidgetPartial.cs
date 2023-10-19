@@ -47,7 +47,7 @@ namespace Hotel.WebUI.ViewComponents.Dashboard
                 ViewBag.UserCount = jsonData3;
             }
             var client4 = _clientFactory.CreateClient();
-            var response4 = await client.GetAsync("https://localhost:7064/api/DashboardWidget/AppUserCount");
+            var response4 = await client.GetAsync("https://localhost:7064/api/DashboardWidget/GetBookingCount");
             if (response4.IsSuccessStatusCode)
             {
 

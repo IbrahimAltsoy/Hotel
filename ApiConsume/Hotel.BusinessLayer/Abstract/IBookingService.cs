@@ -1,12 +1,13 @@
-﻿using Hotel.EntitiyLayer.Concreate;
+﻿using Hotel.DataAccessLayer.Repositories.Abstract;
+using Hotel.EntitiyLayer.Concreate;
 
 namespace Hotel.BusinessLayer.Abstract
 {
-    public interface IBookingService
+    public interface IBookingService: IBookingRepository
     {
 
-        Task<Booking> BookingStatusChangeApproved(Guid id);
-        int GetBookingCount();
+        
+        //Task<List<Booking>> BookingSixtList();
 
     }
 }

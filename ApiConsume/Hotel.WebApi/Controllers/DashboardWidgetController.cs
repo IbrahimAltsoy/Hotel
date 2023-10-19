@@ -45,5 +45,12 @@ namespace Hotel.WebApi.Controllers
 
             return Ok(_roomService.RoomCount());
         }
+        [HttpGet("BookingSixtList")]
+        public IActionResult BookingSixtList()
+        {
+            var model =  _bookingService.BookingSixtList();
+
+            return Ok(model);
+        }
     }
 }

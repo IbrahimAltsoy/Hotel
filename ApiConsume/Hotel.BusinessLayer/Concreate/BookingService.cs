@@ -1,31 +1,16 @@
 ﻿using Hotel.BusinessLayer.Abstract;
 using Hotel.DataAccessLayer;
+using Hotel.DataAccessLayer.Repositories.Concreate;
 using Hotel.EntitiyLayer.Concreate;
+using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace Hotel.BusinessLayer.Concreate
 {
-    public class BookingService : IBookingService
+    public class BookingService : BookingRepository, IBookingService
     {
-        private readonly AppDbContext _context;
-        public BookingService(AppDbContext context)
+        public BookingService(AppDbContext _dbContext, AppDbContext context) : base(_dbContext, context)
         {
-            _context = context;
         }
-        public async Task<Booking> BookingStatusChangeApproved(Guid id)
-        {
-            var value = _context.Bookings.Where(x => x.Id == id).FirstOrDefault();
-            if (value is not null)
-            {
-                value.Status = "Onaylandı";
-            }
-            await _context.SaveChangesAsync();
-            return value; 
-        }
-        public int GetBookingCount()
-        {
-            return _context.Bookings.Count();
-        }
-        
     }
 }
