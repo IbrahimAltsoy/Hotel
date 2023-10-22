@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Hotel.WebUI.Controllers
 {
-    [AllowAnonymous]
+    
     public class RoleAssignController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
@@ -41,6 +41,24 @@ namespace Hotel.WebUI.Controllers
             }
             return View(roleAssignViewModels);
 
+        }
+        [HttpPost]
+        public async Task<IActionResult> Assign(List<RoleAssignViewModel> roleAssignViewModel)
+        {
+            var userId = Guid.Parse(TempData["userId"].ToString());
+            var user = _userManager.Users.FirstOrDefault(x=>x.Id==userId);
+            foreach(var role in roleAssignViewModel)
+            {
+                if (role.RoleExist)
+                {
+                    await _userManager.AddToRoleAsync(user, role.Name);
+                }
+                else
+                {
+                    await _userManager.RemoveFromRoleAsync(user, role.Name);
+                }
+            }
+            return RedirectToAction("Index");
         }
     }
 }

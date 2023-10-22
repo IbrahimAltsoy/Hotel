@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Hotel.WebUI.Controllers
 {
-    [AllowAnonymous]
+    
     public class RoleController : Controller
     {
         private readonly RoleManager<AppRole> _roleManager;
